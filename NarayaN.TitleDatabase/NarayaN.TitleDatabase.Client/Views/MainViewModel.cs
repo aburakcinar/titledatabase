@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight;
 
-namespace NarayaN.TitleDatabase.Client.ViewModel
+namespace NarayaN.TitleDatabase.Client.Views
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.

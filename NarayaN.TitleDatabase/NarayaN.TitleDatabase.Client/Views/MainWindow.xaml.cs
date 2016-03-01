@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NarayaN.TitleDatabase.Client
+namespace NarayaN.TitleDatabase.Client.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

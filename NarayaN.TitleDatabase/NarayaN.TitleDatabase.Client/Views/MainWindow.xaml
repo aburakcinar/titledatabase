@@ -1,4 +1,4 @@
-﻿<MahApps:MetroWindow x:Class="NarayaN.TitleDatabase.Client.MainWindow"
+﻿<MahApps:MetroWindow x:Class="NarayaN.TitleDatabase.Client.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NarayaN.TitleDatabase.Client"
         xmlns:MahApps="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="600" Width="1000">
+        Title="NarayaN Title Database" Height="600" Width="1000">
 
     <MahApps:MetroWindow.Resources>
         <ResourceDictionary>
@@ -20,7 +20,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
