@@ -1,4 +1,8 @@
+using System;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Reactive.Bindings;
+using NarayaN.TitleDatabase.Client.Views.Forms;
 
 namespace NarayaN.TitleDatabase.Client.Views
 {
@@ -16,6 +20,13 @@ namespace NarayaN.TitleDatabase.Client.Views
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        public RelayCommand<string> MenuCommand { get; private set; }
+
+        public ReactiveProperty<ViewModelBase> CurrentContent { get; private set; }
+
+        public ReactiveProperty<string> Username { get; private set; }
+
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -29,6 +40,25 @@ namespace NarayaN.TitleDatabase.Client.Views
             ////{
             ////    // Code runs "for real"
             ////}
+
+            CurrentContent = new ReactiveProperty<ViewModelBase>();
+            Username = new ReactiveProperty<string>("Burak Çýnar");
+
+            MenuCommand = new RelayCommand<string>(p => OnMenuCommand(p));
+        }
+
+        private void OnMenuCommand(string p)
+        {
+            switch (p)
+            {
+                case "SETTINGS":
+                    CurrentContent.Value = new TestFormViewModel();
+                    break;
+
+                case "LISTMOVIES":
+                    CurrentContent.Value = new MovieListFormViewModel();
+                    break;
+            }
         }
     }
 }

@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:NarayaN.TitleDatabase.Client"
         xmlns:MahApps="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d" 
-        Title="NarayaN Title Database" Height="600" Width="1000">
+        Title="NarayaN Title Database" Height="600" Width="1000" DataContext="{Binding Main,Source={StaticResource Locator}}">
 
     <MahApps:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/NarayaN.TitleDatabase.Client;component/Resources/Icons.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/NarayaN.TitleDatabase.Client;component/Resources/CustomStyles.xaml" />
-                
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </MahApps:MetroWindow.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -29,20 +29,34 @@
         </Grid.ColumnDefinitions>
 
         <Border Grid.ColumnSpan="2" Background="#333">
-            <TextBlock Text="Burak Çınar" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="16" Margin="4"/>
+            <TextBlock Text="{Binding Username.Value}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="16" Margin="4"/>
         </Border>
 
         <Border Grid.Row="1" Background="{StaticResource AccentColorBrush}">
-            <StackPanel Margin="10">
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle Fill="White" Width="32" Height="32">
-                        <Rectangle.OpacityMask>
-                            <VisualBrush Visual="{StaticResource appbar_settings}" Stretch="Fill" />
-                        </Rectangle.OpacityMask>
-                    </Rectangle>
-                    <TextBlock Text="Film Arama" Style="{StaticResource stlTextBlockMenu}"/>
-                </StackPanel>
+            <StackPanel Margin="0">
+                <Button Command="{Binding MenuCommand}" CommandParameter="SETTINGS" Style="{x:Null}" Margin="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Fill="White" Width="32" Height="32">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_settings}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock Text="Film Arama" Style="{StaticResource stlTextBlockMenu}"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding MenuCommand}" CommandParameter="LISTMOVIES" Style="{x:Null}" Margin="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Fill="White" Width="32" Height="32">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_list}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock Text="Film Listeleme" Style="{StaticResource stlTextBlockMenu}"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </Border>
+
+        <ContentPresenter Grid.Row="1" Grid.Column="1" Content="{Binding CurrentContent.Value}"/>
     </Grid>
 </MahApps:MetroWindow>

@@ -41,9 +41,11 @@ namespace NarayaN.TitleDatabase.Client.Tools
             //DefaultBindingConfigurationName = defaultBindingMethod.BindingConfigurationName;
             //DefaultBindingType = defaultBindingMethod.BindingType;
 
-            DefaultServiceUri = new Uri("localhost:8081/TDBServices");
-            DefaultBindingConfigurationName = "NarayanCustomBinding";
-            DefaultBindingType = BindingType.CustomBinding;
+            DefaultServiceUri = new Uri("http://localhost:31454/Services/");
+            //DefaultBindingConfigurationName = "NarayanCustomBinding";
+            DefaultBindingConfigurationName = "NarayaWSHttpBinding";
+            //DefaultBindingType = BindingType.CustomBinding;
+            DefaultBindingType = BindingType.WSHttpBinding;
         }
 
         public virtual T CreateChannel<T>()

@@ -10,7 +10,7 @@ namespace NarayaN.TitleDatabase.Server.Services
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
-    public class BSDummy : IDummy
+    public class BSDummy : BaseService, IDummy
     {
         public bool Ping()
         {

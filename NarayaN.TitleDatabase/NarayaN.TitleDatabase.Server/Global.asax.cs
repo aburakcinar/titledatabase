@@ -1,9 +1,11 @@
 ﻿using NarayaN.TitleDatabase.Server.Services;
 using NarayaN.TitleDatabase.Server.Tools;
 using NarayaN.TitleDatabase.Types.Interfaces;
+using RouteDebug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
@@ -17,7 +19,21 @@ namespace NarayaN.TitleDatabase.Server
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            RouteTable.Routes.Add(new ServiceRoute("IDummy.svc", new NarayanServiceHostFactory(), typeof(BSDummy)));
+            //RouteTable.Routes.Add(new ServiceRoute("IDummy.svc", new NarayanServiceHostFactory(), typeof(BSDummy)));
+            //RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
+            RegisterServices(RouteTable.Routes);
+
+            MappingConfigs.Config();
+        }
+
+        private void RegisterServices(RouteCollection routes)
+        {
+            var lstServiceTypes = Assembly.GetExecutingAssembly().GetTypes().Where(p => p.BaseType == typeof(BaseService));
+
+            foreach (var item in lstServiceTypes)
+            {
+                routes.Add(new ServiceRoute(string.Format("Services/{0}.svc", NarayanServiceHostFactory.GetInterfaceType(item).Name), new NarayanServiceHostFactory(), item));
+            }
         }
 
         protected void Session_Start(object sender, EventArgs e)

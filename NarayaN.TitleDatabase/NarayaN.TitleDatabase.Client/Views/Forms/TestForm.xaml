@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="NarayaN.TitleDatabase.Client.Views.Forms.TestForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NarayaN.TitleDatabase.Client.Views.Forms"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <StackPanel>
+        <Button Command="{Binding PingCommand}" Content="Ping" Height="30" Margin="2"/>
+        <Button Command="{Binding FormCommand}" CommandParameter="TEST_LIST_GENRES" Content="TEST__LIST_GENRES" Height="30" Margin="2"/>
+        <TextBox Height="30" Text="{Binding ImdbId.Value}" Margin="2"/>
+        <Button Command="{Binding FormCommand}" CommandParameter="TEST_GET_MOVIE" Content="TEST__GET_MOVIE" Height="30" Margin="2"/>
+    </StackPanel>
+</UserControl>
